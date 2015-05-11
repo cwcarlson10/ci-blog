@@ -4,6 +4,9 @@
 #   Ensure the SQLite 3 gem is defined in your Gemfile
 #   gem 'sqlite3'
 #
+<% require "uri" %>
+
+
 login: &login
   <% username, password, host = ENV["RAILS_DB"].split(":") if ENV["RAILS_DB"] %>
   username: <%= username || "root" %>
@@ -21,10 +24,11 @@ development:
   database: CI_blog_development
 
 heroku:
-  <% username, password, host = ENV["DATABASE_URL"].match(/mysql2:\/\/([^:]+):([^\@]+)@([^\/]+)/).captures if Rails.env.heroku? %>
-  username: <%= username %>
-  password: <%= password %>
-  host: <%= host %>
+  <<: *db_configs
+  <% uri = URI.parse(ENV["CLEARDB_DATABASE_URL"]) if Rails.env.heroku? %>
+  username: <%= uri.user %>
+  password: <%= uri.password %>
+  host: <%= uri.host %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
