@@ -26,9 +26,9 @@ development:
 heroku:
   <<: *db_configs
   <% uri = URI.parse(ENV["CLEARDB_DATABASE_URL"]) if Rails.env.heroku? %>
-  username: <%= uri.user %>
-  password: <%= uri.password %>
-  host: <%= uri.host %>
+  username: <%= uri.user if Rails.env.heroku? %>
+  password: <%= uri.password if Rails.env.heroku?%>
+  host: <%= uri.host if Rails.env.heroku? %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
