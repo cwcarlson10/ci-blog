@@ -3,7 +3,7 @@ deployment:
   heroku:
     branch: master
     heroku:
-      appname: r7-ci-blog
+      appname: cw-ci-blog
 
 machine:
   ruby:
