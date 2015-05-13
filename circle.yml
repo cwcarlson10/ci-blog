@@ -4,3 +4,7 @@ deployment:
     branch: master
     heroku:
       appname: r7-ci-blog
+
+machine:
+  ruby:
+    version: 2.2.1
