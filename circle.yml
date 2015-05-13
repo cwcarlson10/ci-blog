@@ -5,7 +5,6 @@ deployment:
     heroku:
       appname: cw-ci-blog
 
-
 machine:
   ruby:
     version: 2.2.1
