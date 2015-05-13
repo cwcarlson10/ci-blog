@@ -1,0 +1,6 @@
+## Customize deployment commands
+deployment:
+  heroku:
+    branch: master
+    heroku:
+      appname: r7-ci-blog
